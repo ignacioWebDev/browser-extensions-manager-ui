@@ -1,0 +1,428 @@
+:root {
+  --neutral-0: hsl(200, 60%, 99%);
+  --neutral-100: hsl(0, 0%, 93%);
+  --neutral-200: hsl(217, 61%, 90%);
+  --neutral-300: hsl(0, 0%, 78%);
+  --neutral-600: hsl(226, 11%, 37%);
+  --neutral-700: hsl(225, 23%, 24%);
+  --neutral-800: hsl(226, 25%, 17%);
+  --neutral-900: hsl(226, 75%, 14%);
+  --red-400: hsl(3, 86%, 64%);
+  --red-500: hsl(3, 71%, 56%);
+  --red-700: hsl(3, 77%, 44%);
+  --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+}
+
+[data-theme="light"] {
+  --bg: var(--light-gradient);
+  --text: var(--neutral-900);
+  --header-bg: var(--neutral-0);
+  --btn-bg: var(--neutral-100);
+  --btn-hover-bg: var(--neutral-200);
+  --btn-filter-bg: var(--red-400);
+  --btn-filter-hover-bg: var(--neutral-200);
+  --btn-filter-border: var(--neutral-300);
+  --btn-color: var(--neutral-900);
+  --btn-focus-shadow: 0 0 0 3px var(--neutral-0), 0 0 0 5px var(--red-400);
+  --card-bg: var(--neutral-0);
+  --card-color: var(--neutral-900);
+  --card-border: var(--neutral-300);
+  --remove-bg: var(--neutral-0);
+  --remove-color: var(--neutral-900);
+  --remove-border: var(--neutral-300);
+  --remove-focus-bg: var(--neutral-200);
+  --remove-focus-shadow: 0 0 0 3px var(--neutral-0), 0 0 0 5px var(--red-400);
+  --toggle-bg: #ccc;
+  --toggle-focus: 0 0 0 3px var(--neutral-0), 0 0 0 5px var(--red-400);
+  --text-remove: var(--neutral-0);
+}
+
+[data-theme="dark"] {
+  --bg: var(--dark-gradient);
+  --text: var(--neutral-0);
+  --header-bg: var(--neutral-800);
+  --btn-bg: var(--neutral-700);
+  --btn-hover-bg: var(--neutral-600);
+  --btn-filter-bg: var(--red-400);
+  --btn-filter-hover-bg: var(--neutral-600);
+  --btn-filter-border: var(--neutral-900);
+  --btn-color: var(--neutral-0);
+  --btn-focus-shadow: 0 0 0 3px var(--neutral-800), 0 0 0 5px var(--red-400);
+  --card-bg: var(--neutral-800);
+  --card-color: var(--neutral-0);
+  --card-border: var(--neutral-600);
+  --remove-bg: var(--neutral-800);
+  --remove-color: var(--neutral-0);
+  --remove-border: var(--neutral-600);
+  --remove-focus-bg: var(--neutral-600);
+  --remove-focus-shadow: 0 0 0 3px var(--neutral-800), 0 0 0 5px var(--red-400);
+  --toggle-bg: var(--neutral-300);
+  --toggle-focus: 0 0 0 3px var(--neutral-800), 0 0 0 5px var(--red-400);
+  --text-remove: var(--neutral-900);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Noto Sans', sans-serif;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  padding: 50px 100px 0 100px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding: 12px;
+  border-radius: 15px;
+  background-color: var(--header-bg);
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.btn-theme {
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--btn-bg);
+}
+
+.btn-theme:focus {
+  outline: none;
+  box-shadow: var(--btn-focus-shadow);
+}
+
+.btn-theme:hover {
+  background-color: var(--btn-filter-hover-bg);
+}
+
+.extensions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter-buttons button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-filter-border);
+}
+
+.filter-buttons button.active {
+  font-weight: 500;
+  border: 1px solid var(--red-700);
+  background-color: var(--red-500);
+  color: var(--text);
+}
+
+.filter-buttons button:focus {
+  outline: none;
+  background-color: var(--btn-filter-bg);
+  box-shadow: var(--btn-focus-shadow);
+  color: var(--text);
+  border: 1px solid var(--btn-filter-border);
+}
+
+.filter-buttons button:hover {
+  background-color: var(--btn-filter-hover-bg);
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.filter-buttons button.active:hover {
+  background-color: var(--red-700);
+  color: var(--text-remove);
+  font-weight: 700;
+}
+
+.extensions-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.card {
+  flex: 1 1 450px;
+  height: 180px;
+  border-radius: 30px;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.card__description {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.card__description img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+}
+
+.card__description h3 {
+  font-weight: 700;
+  color: var(--text);  
+}
+
+.card__description p {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+}
+
+.card__actions__btn-remove {
+  background-color: transparent;
+  color: var(--neutral-0);
+  border-radius: 20px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: var(--remove-bg);
+  border: 1px solid var(--remove-border);
+  color: var(--text);
+}
+
+.card__actions__btn-remove:focus {
+  outline: none;
+  box-shadow: var(--remove-focus-shadow);
+  background-color: var(--remove-focus-bg);
+}
+
+.card__actions__btn-remove:hover {
+  background-color: var(--red-500);
+  color: var(--text-remove);
+  border: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle__label {
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle__slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.toggle__input:checked + .toggle__label {
+  background-color: var(--red-500);
+}
+
+.toggle__input:checked + .toggle__label .toggle__slider {
+  transform: translateX(24px);
+}
+
+.toggle__input:focus + .toggle__label {
+  outline: none;
+  box-shadow: var(--toggle-focus);
+}
+
+.empty-message{
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 36%;
+}
+
+.attribution {
+  position: relative;
+  bottom: 0;
+  font-size: 10px;
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+.attribution a {
+  text-decoration: none;
+} 
+
+/* Responsive Styles */
+
+@media (max-width: 1360px) {
+  body {
+    padding: 30px 60px 0 60px;
+  }
+  header {
+    padding: 10px;
+    margin-bottom: 35px;
+  }
+  .logo {
+    width: 150px;
+  }
+  .btn-theme {
+    width: 40px;
+    height: 40px;
+  }
+  .btn-theme img {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 1px;
+    left: 0;
+  }
+  .extensions h1 {
+    font-size: 22px;
+  }
+  .filter-buttons {
+    gap: 15px;
+  }
+  .filter-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .card {
+    flex: 1 1 350px;
+    height: 150px;
+    padding: 15px;
+  }
+  .card__description h3 {
+    font-size: 16px;
+  }
+  .card__description p {
+    font-size: 14px;
+  }
+  .card__description img {
+    width: 47px;
+    height: 47px;
+  }
+  .card__actions {
+    left: 15px;
+    right: 15px;
+  }
+  .card__actions__btn-remove {
+    padding: 6px 10px;
+  }
+  .card__actions__btn-remove button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-theme {
+    width: 45px;
+    height: 45px;
+  }
+  .extensions {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .extensions h1 {
+    font-size: 30px;
+  }
+  .filter-buttons button {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+  .card__description img {
+    width: 50px;
+    height: 50px;
+  }
+  .card__description h3 {
+    font-size: 18px;
+  }
+  .card__description p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 425px) {
+  body {
+    padding: 30px;
+  }
+  header {
+    padding: 10px;
+  }
+  .btn-theme {
+    width: 40px;
+    height: 40px;
+  }
+  .card {
+    flex: 1 1 100%;
+    height: auto;
+
+  }
+  .extensions h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  .filter-buttons {
+    gap: 10px;
+  }
+  .card__description {
+    gap: 15px;
+  }
+  .card__description img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+
+
+
+
+
+
